@@ -12,6 +12,10 @@ namespace Shoping.Data.Entities
         [Required(ErrorMessage ="El campo {0} es obligario.")] // esto significa que requiere el nombre para el pais
         //El campo {0} se remplace por la variable a la que hacemos referencia , en este caso name
         // pero recuerde que name = pais en su display
-        public string Name { get; set; }    
+        public string Name { get; set; }
+        public ICollection<State> States { get; set; }
+        [Display(Name = "Estados/Departamentos")]
+        public int StatesNumber => States==null ? 0: States.Count;
+
     }
 }
