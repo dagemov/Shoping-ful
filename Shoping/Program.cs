@@ -22,6 +22,7 @@ builder.Services.AddIdentity<User, IdentityRole>(cfg =>
     cfg.Password.RequireLowercase = false;
     cfg.Password.RequireNonAlphanumeric = false;
     cfg.Password.RequireUppercase = false;
+    cfg.Password.RequiredLength = 6;
 }).AddEntityFrameworkStores<DataContext>();
 
 builder.Services.AddTransient<SeedDb>();
@@ -58,7 +59,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
